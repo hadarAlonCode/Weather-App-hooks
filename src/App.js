@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { observer } from 'mobx-react'
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
+
+@observer
+class App extends Component {
+
+  render() {
+    return(
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -20,7 +25,8 @@ function App() {
         </a>
       </header>
     </div>
-  );
+    )}
 }
+
 
 export default App;
