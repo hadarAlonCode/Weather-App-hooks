@@ -1,0 +1,15 @@
+.navBar{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr; 
+    background-color:#34495e;
+    color: white;
+    height: 50px;
+}
+
+.link {
+    color: #FFF;
+  }
+  .link:hover {
+     color: #00F
+  }

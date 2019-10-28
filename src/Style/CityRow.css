@@ -1,0 +1,23 @@
+.cityLine{
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+    "i n . . b a";
+}
+
+.iconPhoto{
+  grid-area: i;
+}
+
+.cityNameAndTemp{
+    grid-area: n;
+  }
+
+.heart{
+    grid-area: b;
+}
+
+.addToFav{
+    grid-area: a;
+}
