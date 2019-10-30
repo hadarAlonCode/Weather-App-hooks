@@ -1,23 +1,55 @@
-.cityLine{
+.box-firstSection{
     display: grid;
-    grid-gap: 5px;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-areas:
-    "i n . . b a";
+    grid-auto-flow: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    
 }
 
-.iconPhoto{
-  grid-area: i;
+.box-first{
+    display: grid;
+    grid-auto-flow: column; 
+    justify-content: start;
+    align-content: center;
+    font-size: 30px;
+    
 }
 
-.cityNameAndTemp{
-    grid-area: n;
-  }
-
-.heart{
-    grid-area: b;
+.box-second{
+    display: grid;
+    grid-auto-flow: column; 
+    justify-content: end;
+    grid-gap: 10px;
 }
 
-.addToFav{
-    grid-area: a;
+.weatherPhoto{
+    height: 150px;
+}
+
+.MuiSvgIcon-root{
+  font-size: 40px !important;
+}
+
+.MuiTypography-body1{
+    font-size: 18px !important;
+}
+
+
+/* mobile */
+@media only screen and (max-width: 765px) {
+    
+}
+
+/* middle */
+@media only screen and (min-width: 766px) and (max-width: 1199px) {
+   
+
+}
+
+/* full */
+
+ @media only screen and (min-width: 1200px) {
+     
+    
 }
