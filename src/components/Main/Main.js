@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react'
-import "../../Style/Main.css"
+import "../../styles/components/main.scss";
 
 import Input from './Input';
 import CityRow from './CityRow';
 import FiveDays from './FiveDays';
+import FavoriteBtn from './FavoriteBtn';
 
 @inject("CityStore")
 @observer
@@ -15,15 +16,18 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <Input />
+                <div className="search_fav">
+                    <Input />
+                    <FavoriteBtn />
+                </div>
+
                 <div className="weatherBox">
-                   <div className="cityRow">
-                       <CityRow />
-                   </div>
-                   <div className="weatherTextRow">{this.props.CityStore.weatherText}</div>
-                   <div className="fiveDaysRow">
-                       {this.props.CityStore.fiveDays.map(d=> <FiveDays day={d} key={d.id} />)}
-                   </div>
+                    <div>
+                        <CityRow />
+                    </div>
+                    <div>
+                        {this.props.CityStore.fiveDays.map(d => <FiveDays day={d} key={d.id} />)}
+                    </div>
                 </div>
 
 

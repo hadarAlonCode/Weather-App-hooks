@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import "../../Style/Input.css"
+import { observer, inject } from 'mobx-react'
+
+import "../../styles/components/input.scss"
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -9,14 +11,19 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Grid from '@material-ui/core/Grid';
 
+// import CityStore from "../../Stores/CityStore";
+
+inject("CityStore")
+// observer()
+
+
+
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         alignItems: 'center',
         width: "40vw",
         backgroundColor: "rgba(255, 255, 255, 0.11)",
-
-
     },
     input: {
         marginLeft: theme.spacing(1),
@@ -31,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-function Input() {
+function Input(props) {
 
 
     const [city, setCity] = useState("")
@@ -44,6 +51,7 @@ function Input() {
 
     const clickSearch = () => {
        console.log(city);
+       props.CityStore.getLocation(city)
        
     }
 

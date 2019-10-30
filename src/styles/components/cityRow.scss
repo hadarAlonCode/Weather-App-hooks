@@ -1,0 +1,79 @@
+@import "../variables";
+@import "../devices";
+
+.citySection{
+    display: grid;
+    grid-template-columns: 0.6fr 2fr 1fr;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 90px; 
+    height: 100%;
+
+    .citySection_icon{
+        display: grid;
+        justify-content: end;
+        align-content: center;
+
+        img{
+            height: 15vw;
+        }
+    }
+
+    .citySection_city_text{
+        display: grid;
+        grid-auto-flow: row;
+        // justify-content: start;
+        align-content: center;
+        font-size: 40px;
+        color: white;
+        margin-bottom: 20px;
+
+        .line{
+            display: grid;
+            height: 2px;
+            width: 200px;
+            background-color: white;
+            margin: auto;
+        }
+
+        .city_name{
+            margin: auto; 
+        }
+
+        .city_weather{
+            margin: auto
+        }
+    }
+
+
+}
+
+
+
+
+
+//   font-size: 40px !important;
+// }
+
+// .MuiTypography-body1{
+//     font-size: 18px !important;
+// }
+
+
+// /* mobile */
+// @media only screen and (max-width: 765px) {
+    
+// }
+
+// /* middle */
+// @media only screen and (min-width: 766px) and (max-width: 1199px) {
+   
+
+// }
+
+// /* full */
+
+//  @media only screen and (min-width: 1200px) {
+     
+    
+// }

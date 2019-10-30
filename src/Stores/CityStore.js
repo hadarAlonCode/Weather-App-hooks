@@ -7,17 +7,18 @@ import fiveDaysData from "../Json/fiveDays.json"
 
 
 export class CityStore {
-    @observable city =  ""
+    @observable city = ""
     @observable cityKey = 0
     @observable weatherText = ""
     @observable currentTemp = 0
     @observable unit = ""
     @observable fiveDays = []
     @observable icon = "1"
+    @observable error = false
 
 
 
-    @action getDemiData =() => {
+    @action getDemiData = () => {
         this.city = cityData[0].LocalizedName
         this.cityKey = cityData[0].Key
 
@@ -30,42 +31,65 @@ export class CityStore {
 
         let id = 0
 
-        for (let d of fiveDaysData.DailyForecasts){
+        for (let d of fiveDaysData.DailyForecasts) {
             id++
-            this.fiveDays.push({ day: d.Date , minTemp: d.Temperature.Minimum.Value  , maxTemp: d.Temperature.Maximum.Value, id: id  })
-        } 
+            this.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id: id })
+        }
     }
 
-    
-    @action getLocation = async (location) => {
-        const response = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf&q=${location}`)
-        this.city = response.data[0].LocalizedName
-        this.cityKey = response.data[0].Key
 
-        this.getCurrentWeather()
-        this.getFiveDays()
+    @action getLocation = async (location) => {
+
+        try {
+            this.error = false
+            const response = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf&q=${location}`)
+            this.city = response.data[0].LocalizedName
+            this.cityKey = response.data[0].Key
+
+            this.getCurrentWeather()
+            this.getFiveDays()
+        }
+        catch (error) {
+            this.error = true
+            return error
+        }
     }
 
     @action getCurrentWeather = async () => {
-        const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${this.cityKey}?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf`)
-        this.weatherText = response.data[0].WeatherText
-        this.currentTemp = response.data[0].Temperature.Metric.Value
-        this.unit = response.data[0].Temperature.Metric.Unit
-        this.icon = response.data[0].WeatherIcon
 
+
+        try {
+
+            const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${this.cityKey}?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf`)
+            this.weatherText = response.data[0].WeatherText
+            this.currentTemp = response.data[0].Temperature.Metric.Value
+            this.unit = response.data[0].Temperature.Metric.Unit
+            this.icon = response.data[0].WeatherIcon
+        }
+        catch (error) {
+            this.error = true
+            return error
+        }
     }
 
     @action getFiveDays = async () => {
-        const response = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.cityKey}?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf&metric=true`)
-        let id = 0
 
-        for (let d of response.data.DailyForecasts){
-            id++
-            this.fiveDays.push({ day: d.Date , minTemp: d.Temperature.Minimum.Value  , maxTemp: d.Temperature.Maximum.Value, id: id  })
-        }        
+        try {
+            const response = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.cityKey}?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf&metric=true`)
+            let id = 0
+
+            for (let d of response.data.DailyForecasts) {
+                id++
+                this.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id: id })
+            }
+        }
+        catch (error) {
+            this.error = true
+            return error
+        }
     }
 
-   
+
 }
 
 
