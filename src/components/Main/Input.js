@@ -11,12 +11,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Grid from '@material-ui/core/Grid';
 
-// import CityStore from "../../Stores/CityStore";
-
-inject("CityStore")
-// observer()
-
-
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -38,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-function Input(props) {
+const Input = inject("CityStore")(observer(function (props) {
 
 
     const [city, setCity] = useState("")
@@ -82,6 +76,6 @@ function Input(props) {
 
     );
 
-}
+}))
 
 export default Input;

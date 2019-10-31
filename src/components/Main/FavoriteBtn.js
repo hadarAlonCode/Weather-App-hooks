@@ -8,50 +8,41 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import "../../styles/components/favoriteBtn.scss"
 
-@inject("CityStore")
+
+@inject("CityStore", "FavoriteStore")
 @observer
 
+
 class FavoriteBtn extends Component {
-    constructor(){
-        super()
-        this.state = {
-            favorite: false,    
-         }
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         favorite: false,
+    //     }
+    // }
 
-    addToFavorite=()=>{
-        console.log('add to favorite');  
-    }
-
-    removeFromFavorite=()=>{
-        console.log('remove from favorite');  
-
-    }
 
     handleChange = (event) => {
-        console.log(event.target.checked); 
-        this.setState({favorite: event.target.checked} );
 
-        if (event.target.checked == true){
-            this.addToFavorite()
-        } else {
-            this.removeFromFavorite()
-        }
+        this.props.CityStore.favorite()
 
-      };
+        event.target.checked ? this.props.FavoriteStore.addToFavorites(this.props.CityStore.city.cityKey, this.props.CityStore.city.name)
+            : this.props.FavoriteStore.removeFromFavorites(this.props.CityStore.city.cityKey)
+    };
 
     render() {
+
         return (
             <div className="favoriteBtn">
-            <FormGroup row>   
-                <FormControlLabel
-                    className="favoriteIcon"
-                    onChange={this.handleChange}
-                    control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
+                <FormGroup row>
+                    <FormControlLabel
+                        className="favoriteIcon"
+                        onChange={this.handleChange}
+                        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedA" checked={this.props.CityStore.city.isFavorite} />}
                     // label="Add to favorite"
-                />
-            </FormGroup>
-        </div>
+                    />
+                </FormGroup>
+            </div>
         );
     }
 }

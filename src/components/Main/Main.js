@@ -26,7 +26,7 @@ class Main extends Component {
                         <CityRow />
                     </div>
                     <div>
-                        {this.props.CityStore.fiveDays.map(d => <FiveDays day={d} key={d.id} />)}
+                        {this.props.CityStore.city.fiveDays.map(d => <FiveDays day={d} key={d.id} />)}
                     </div>
                 </div>
 
