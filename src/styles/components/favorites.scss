@@ -1,0 +1,15 @@
+.favoritesSection{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 80%;
+    text-align: center;
+    margin: auto;
+       
+}
+
+.favorites_title{
+    text-align: center;
+    color: white; 
+    margin-bottom: 50px;
+    margin-top: 40px;
+}

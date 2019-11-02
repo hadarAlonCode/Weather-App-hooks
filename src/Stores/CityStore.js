@@ -8,6 +8,8 @@ import { cpus } from 'os';
 
 
 export class CityStore {
+
+    api_key = "mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf"
     @observable city = { name: "", cityKey: 0, weatherText: "", currentTemp: 0, unit: "", fiveDays: [], icon: "1", isFavorite: false, date: "" }
     @observable error = false
 
@@ -28,7 +30,7 @@ export class CityStore {
 
         for (let d of fiveDaysData.DailyForecasts) {
             id++
-            this.city.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id: id })
+            this.city.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id, icon: d.Day.Icon  })
         }
     }
 
@@ -37,12 +39,9 @@ export class CityStore {
 
         try {
             this.error = false
-            const response = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf&q=${location}`)
-            this.city.name = response.data[0].LocalizedName
-            this.city.cityKey = response.data[0].Key
+            const response = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.api_key}&q=${location}`)
+            this.getCurrentWeather(response.data[0].LocalizedName, response.data[0].Key)
 
-            this.getCurrentWeather()
-            this.getFiveDays()
 
         }
         catch (error) {
@@ -51,17 +50,21 @@ export class CityStore {
         }
     }
 
-    @action getCurrentWeather = async () => {
-
+    @action getCurrentWeather = async (name, key) => {
+console.log(name)
+console.log(key)
         try {
-
-            const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${this.city.cityKey}?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf`)
+            this.error = false
+            const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=${this.api_key}`)
+            this.city.name = name
+            this.city.cityKey = key
             this.city.weatherText = response.data[0].WeatherText
             this.city.currentTemp = response.data[0].Temperature.Metric.Value
             this.city.unit = response.data[0].Temperature.Metric.Unit
             this.city.icon = response.data[0].WeatherIcon
             this.city.date = response.data[0].LocalObservationDateTime
             this.city.isFavorite = this.localFavorite(this.city.cityKey)
+            this.getFiveDays()
         }
         catch (error) {
             this.error = true
@@ -72,13 +75,13 @@ export class CityStore {
     @action getFiveDays = async () => {
 
         try {
-            const response = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.city.cityKey}?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf&metric=true`)
+            const response = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.city.cityKey}?apikey=${this.api_key}&metric=true`)
             let id = 0
             this.city.fiveDays = []
 
             for (let d of response.data.DailyForecasts) {
                 id++
-                this.city.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id: id })
+                this.city.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id: id, icon: d.Day.Icon })
             }
         }
         catch (error) {

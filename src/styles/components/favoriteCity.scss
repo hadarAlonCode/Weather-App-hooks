@@ -1,0 +1,16 @@
+@import "../variables";
+@import "../devices";
+
+.favorite_city_box{
+    margin: 20px;
+    background-color: $mainColor;
+    display: grid;
+    height: 250px;
+    border-radius: 20px;
+    color: #FFF;
+
+    .favorite_name{
+        margin: auto;
+    justify-content: center;
+    }
+}

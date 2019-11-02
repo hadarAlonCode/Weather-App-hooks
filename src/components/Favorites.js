@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react'
 import FavoriteCity from "./Favorites/FavoriteCity"
+import "../styles/components/favorites.scss"
 
 
 
@@ -14,7 +15,8 @@ class Favorites extends Component {
         
         return (
             <div>
-               <div>{this.props.FavoriteStore.favoriteCities.map( c => <FavoriteCity city={c} key={c.key} />)}</div> 
+               <h1 className="favorites_title">Favorites</h1>
+               <div className="favoritesSection">{this.props.FavoriteStore.favoriteCities.map( c => <FavoriteCity city={c} key={c.key} />)}</div> 
             </div>
         );
     }

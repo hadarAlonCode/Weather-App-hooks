@@ -25,17 +25,11 @@ class Main extends Component {
                     <div>
                         <CityRow />
                     </div>
-                    <div>
+                    <div className="fiveDaysBox">
                         {this.props.CityStore.city.fiveDays.map(d => <FiveDays day={d} key={d.id} />)}
                     </div>
                 </div>
 
-
-                {/* <div>{this.props.CityStore.city}</div>
-                <div>{this.props.CityStore.cityKey}</div>
-                <div>{this.props.CityStore.weatherText}</div>
-                <div>{this.props.CityStore.currentTemp}</div>
-                <div>{this.props.CityStore.unit}</div> */}
 
             </div>
         );

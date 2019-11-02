@@ -4,6 +4,7 @@ import axios from 'axios';
 
 export class FavoriteStore {
 
+    api_key = "mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf"
     @observable favoriteCities =  JSON.parse(localStorage.favoriteCities || "[]")
 
     @action addToFavorites = async ( cityKey , name )=>{
@@ -11,7 +12,7 @@ export class FavoriteStore {
         let saveCity = {key: cityKey, name: name, isFavorite: true }
 
         try {
-            const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf`)
+            const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${this.api_key}`)
             saveCity.conditions = {
                 weatherText: response.data[0].WeatherText,
                 currentTemp: response.data[0].Temperature.Metric.Value,
