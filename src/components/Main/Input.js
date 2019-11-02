@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { observer, inject } from 'mobx-react'
+import { ToastsContainer, ToastsStore } from 'react-toasts';
 
 import "../../styles/components/input.scss"
 import { makeStyles } from '@material-ui/core/styles';
@@ -40,14 +41,34 @@ const Input = inject("CityStore")(observer(function (props) {
 
 
     const handleInput = (e) => {
-        setCity(e.target.value)
+        if (e.target.value.match(/^[A-Za-z]/)) {
+            setCity(e.target.value)
+        } else {
+            // ToastsStore.error("Please enter a valid city in English letters only") 
+            return false
+        }
+
     }
 
-    const clickSearch = () => {
-       console.log(city);
-       props.CityStore.getLocation(city)
-       
+    const clickSearch = async () => {
+        if (city == "") {
+            ToastsStore.error("Please enter a valid city in English letters only")
+        } else {
+
+            let searchCity = await props.CityStore.getLocation(city)
+            setCity("")
+            console.log(searchCity);
+
+            if (!searchCity) {
+                return ToastsStore.error("Please enter a valid city")
+            }
+
+        }
+
+
+
     }
+
 
 
     return (
@@ -69,6 +90,7 @@ const Input = inject("CityStore")(observer(function (props) {
                     <IconButton color="primary" className={classes.iconButton} aria-label="directions">
                     </IconButton>
                 </Paper>
+                <ToastsContainer store={ToastsStore} />
             </Grid>
 
 

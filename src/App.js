@@ -6,7 +6,6 @@ import Header from './components/Header';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import Main from "./components/Main/Main"
 import Favorites from "./components/Favorites"
-import Error from "./components/Error"
 
 @inject("CityStore")
 @observer
@@ -17,7 +16,7 @@ class App extends Component {
   //   this.props.CityStore.getLocation("tel aviv")
   // }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.CityStore.getDemiData()
   }
 
@@ -26,10 +25,9 @@ class App extends Component {
       <Router>
         <div>
           <Header />
-          {this.props.CityStore.error ? 
-          <Error /> : 
-          <Route path="/" exact render={() => <Main />} /> }
-          
+
+          <Route path="/" exact render={() => <Main />} />
+
           <Route path="/favorites" exact render={() => <Favorites />} />
         </div>
       </Router>

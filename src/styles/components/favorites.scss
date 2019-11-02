@@ -1,9 +1,10 @@
 .favoritesSection{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    width: 80%;
+    width: 1100px;
     text-align: center;
     margin: auto;
+    grid-gap: 55px;
        
 }
 

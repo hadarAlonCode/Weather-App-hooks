@@ -2,15 +2,33 @@
 @import "../devices";
 
 .favorite_city_box{
-    margin: 20px;
-    background-color: $mainColor;
+    // margin: 20px;
     display: grid;
+    background-color: $mainColor;
     height: 250px;
     border-radius: 20px;
     color: #FFF;
 
     .favorite_name{
         margin: auto;
-    justify-content: center;
+        font-size: 25px;
     }
+
+    .favorite_temp{
+        margin: auto;
+        font-size: 25px;
+    }
+
+    .favorite_icon{
+        margin: auto   
+    }
+
+    .favorite_text{
+        font-size: 20px;
+    }
+
+    img{
+        height: 50px;
+    }
+
 }

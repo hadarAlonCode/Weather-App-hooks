@@ -42,11 +42,11 @@ export class CityStore {
             const response = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.api_key}&q=${location}`)
             this.getCurrentWeather(response.data[0].LocalizedName, response.data[0].Key)
 
-
+            return true
         }
         catch (error) {
-            this.error = true
-            return error
+
+            return false
         }
     }
 
@@ -67,7 +67,7 @@ console.log(key)
             this.getFiveDays()
         }
         catch (error) {
-            this.error = true
+            // this.error = true
             return error
         }
     }
@@ -85,7 +85,7 @@ console.log(key)
             }
         }
         catch (error) {
-            this.error = true
+            // this.error = true
             return error
         }
     }

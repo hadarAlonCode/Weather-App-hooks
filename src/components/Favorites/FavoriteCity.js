@@ -31,9 +31,9 @@ class FavoriteCity extends Component {
             <Link  style={{ textDecoration: 'none' }} to='/' onClick={this.getCity}>
                 <div className="favorite_city_box">
                     <div className="favorite_name">{this.props.city.name}</div>
-                    <div>{this.props.city.conditions.currentTemp}°C</div>
-                    <div><img alt="Weather Icon" src={this.iconsFunc()} className="" /></div>
-                    <div>{this.props.city.conditions.weatherText}</div>
+                    <div className="favorite_temp">{this.props.city.conditions.currentTemp}°C</div>
+                    <div className="favorite_icon"><img alt="Weather Icon" src={this.iconsFunc()} className="" /></div>
+                    <div className="favorite_text">{this.props.city.conditions.weatherText}</div>
                 </div>
 
 
