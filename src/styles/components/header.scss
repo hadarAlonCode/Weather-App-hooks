@@ -3,12 +3,21 @@
 
 .navBar{
    display: grid;
-   min-height: 50px;
+   min-height: 68px;
    background-color:#263238a8;
    grid-auto-flow: column;
    padding-left: 20px;
    padding-right: 20px;
+   font-size: 18px;
 }
+
+// .navBar .dark_mood{
+//    background-color:#969ea1a8;
+// }
+
+// .navBar .light_mood{
+//    background-color:#263238a8;
+// }
 
 .headerLinks{
   display: grid; 

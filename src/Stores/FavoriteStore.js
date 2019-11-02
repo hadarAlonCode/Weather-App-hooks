@@ -31,8 +31,17 @@ export class FavoriteStore {
     @action removeFromFavorites = ( cityKey ) => {
         
         this.favoriteCities = this.favoriteCities.filter(c => c.key !== cityKey)
-        localStorage.favoriteCities = JSON.stringify(this.favoriteCities)
+        localStorage.favoriteCities = JSON.stringify(this.favoriteCities)  
+    }
+
+    @action updateDate = (date , cityKey, name) =>{
         
+        this.addToFavorites(cityKey, name)
+        
+        this.favoriteCities = this.favoriteCities.filter(c => c.conditions.date !== date)
+        localStorage.favoriteCities = JSON.stringify(this.favoriteCities)  
+
+    
     }
 
 }

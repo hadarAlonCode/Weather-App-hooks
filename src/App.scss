@@ -11,10 +11,35 @@ html, body {
   font-family: $font2;
 }
 
-
-/* night: https://images.unsplash.com/photo-1477158340414-06e7a2c10ada?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80 */
 body{
-  background-image: url("https://images.unsplash.com/photo-1547041958-155fd8255b37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
-  background-repeat: no-repeat;
-  background-size: cover;
+
+
+  .light_mood{
+    height: 100%;
+    background-image: url($backroundPhoto_light);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+  }
+  
+  .dark_mood{
+    height: 200vh;
+    background-image: url($backroundPhoto_dark);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+  }
+
+
 }
+
