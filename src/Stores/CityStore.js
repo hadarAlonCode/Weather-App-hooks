@@ -4,7 +4,6 @@ import axios from 'axios';
 import cityData from "../Json/city.json"
 import currentWeatherData from "../Json/currentWeather.json"
 import fiveDaysData from "../Json/fiveDays.json"
-import { cpus } from 'os';
 
 
 export class CityStore {
@@ -12,9 +11,7 @@ export class CityStore {
     api_key = "mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf"
     @observable city = { name: "", cityKey: 0, weatherText: "", currentTemp: 0, unit: "", fiveDays: [], icon: "1", isFavorite: false, date: "" }
     @observable error = false
-
-    @observable latitude = ""
-    @observable longitude = ""
+    @observable isFirstLogin = true
 
 
     @action getDemiData = () => {
@@ -115,7 +112,7 @@ export class CityStore {
 
     @action getLocation = () => {
         console.log(navigator.geolocation);
-
+        this.isFirstLogin = false
         if (navigator.geolocation) {
 
             navigator.geolocation.getCurrentPosition(this.showPosition);

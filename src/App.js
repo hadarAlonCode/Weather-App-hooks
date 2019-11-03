@@ -18,9 +18,11 @@ class App extends Component {
   // }
 
   componentDidMount=()=>{
-    this.props.CityStore.getLocation()
-    this.props.HeaderStore.checkLocalStorage()
- 
+    let CityStore = this.props.CityStore
+    if(CityStore.isFirstLogin){
+      CityStore.getLocation()
+      this.props.HeaderStore.checkLocalStorage() 
+    }
 }
 
 
