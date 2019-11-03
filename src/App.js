@@ -12,15 +12,16 @@ import Favorites from "./components/Favorites"
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.CityStore.getDemiData()
-    this.props.HeaderStore.checkLocalStorage()
-  }
+  // componentDidMount() {
+  //   this.props.CityStore.getDemiData()
+  //   this.props.HeaderStore.checkLocalStorage()
+  // }
 
-//   componentDidMount=()=>{
-//     this.props.CityStore.getLocation()
-    
-// }
+  componentDidMount=()=>{
+    this.props.CityStore.getLocation()
+    this.props.HeaderStore.checkLocalStorage()
+ 
+}
 
 
   render() {
