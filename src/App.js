@@ -14,6 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.CityStore.getDemiData()
+    this.props.HeaderStore.checkLocalStorage()
   }
 
 //   componentDidMount=()=>{
@@ -25,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className={this.props.HeaderStore.mode}>
+        <div className={this.props.HeaderStore.isLight ? "light_mode" : "dark_mode" }>
           <Header />
 
           <Route path="/" exact render={() => <Main />} />
