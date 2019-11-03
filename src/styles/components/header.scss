@@ -4,7 +4,7 @@
 .navBar{
    display: grid;
    min-height: 68px;
-   grid-template-columns: 1fr 1fr 4fr;
+   grid-template-columns: 1.1fr 1fr 4fr;
    padding-left: 30px;
    padding-right: 30px;
    font-size: 18px;
@@ -91,3 +91,31 @@
 
    }
    
+
+
+   /* mobile */
+@media  #{$break1} {
+   
+
+    
+}
+
+/* middle */
+@media #{$break2} {
+   .navBar{
+      display: grid;
+      min-height: 68px;
+      grid-template-columns: 1.7fr 1fr 4fr;
+      padding-left: 30px;
+      padding-right: 30px;
+      font-size: 18px;
+   }
+
+}
+
+/* full */
+
+ @media #{$break3} {
+     
+    
+}

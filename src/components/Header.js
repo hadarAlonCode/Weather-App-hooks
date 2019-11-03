@@ -33,15 +33,16 @@ class Header extends Component {
 
 
     render() {
-        
+
         return (
             <div className="navBar" id={this.props.HeaderStore.isLight ? "light_mode" : "dark_mode"} >
                 <div className="logo" ><strong>Hadar Weather App</strong></div>
+                {/* <div className="nav-toggle"></div> */}
                 <div className="toggleSection">
                     <div className="lightMode" id={this.colorToggle()}>
                         <Brightness5Icon />
                         <Switch
-                            checked = {!this.props.HeaderStore.isLight}
+                            checked={!this.props.HeaderStore.isLight}
                             onChange={this.changeMode}
                             value="checkedB"
                             color="default"
@@ -52,7 +53,7 @@ class Header extends Component {
                     <div className="tempMode" id={this.colorToggle()}>
                         <div className="tempType">°C</div>
                         <Switch
-                        checked= {!this.props.HeaderStore.celsiusType}
+                            checked={!this.props.HeaderStore.celsiusType}
                             onChange={this.changeTempMode}
                             value="checkedA"
                             color="default"

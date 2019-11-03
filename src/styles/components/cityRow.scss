@@ -45,7 +45,6 @@
         font-size: 40px;
         color: white;
         margin-bottom: 40px;
-        // margin: auto;
 
         .line{
             display: grid;
@@ -73,38 +72,32 @@
         }
     }
 
-    
-
-
-
 }
 
 
 
 
-
-//   font-size: 40px !important;
-// }
-
-// .MuiTypography-body1{
-//     font-size: 18px !important;
-// }
+.MuiTypography-body1{
+    font-size: 18px !important;
+}
 
 
-// /* mobile */
-// @media only screen and (max-width: 765px) {
-    
-// }
-
-// /* middle */
-// @media only screen and (min-width: 766px) and (max-width: 1199px) {
+/* mobile */
+@media  #{$break1} {
    
 
-// }
+    
+}
 
-// /* full */
+/* middle */
+@media #{$break2} {
+   
 
-//  @media only screen and (min-width: 1200px) {
+}
+
+/* full */
+
+ @media #{$break3} {
      
     
-// }
+}

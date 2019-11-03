@@ -1,14 +1,14 @@
 @import "../variables";
 @import "../devices";
 
-// @keyframes slide-from-bottom {
-//     from {
-//       margin-right: -30%;
-//     }
-//     to {
-//       margin-right: 0;
-//     }
-//   }
+@keyframes slide-from-bottom {
+    from {
+      margin-right: -30%;
+    }
+    to {
+      margin-right: 0;
+    }
+  }
 
 .dailyForecast {
     display: grid;
@@ -24,8 +24,8 @@
     text-align: center;
     align-content: center;
     margin-right: 0%;
-    // animation-name: slide-from-bottom;
-    // animation-duration: 2s;
+    animation-name: slide-from-bottom;
+    animation-duration: 2s;
     
 
 .dateNumb{
