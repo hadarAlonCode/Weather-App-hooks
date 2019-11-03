@@ -17,13 +17,16 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         alignItems: 'center',
-        width: "40vw",
+        width: "50vw",
         backgroundColor: "rgba(255, 255, 255, 0.295)",
+
+        // @media "(max-width: 765px)"
     },
     input: {
         marginLeft: theme.spacing(1),
         flex: 1,
         color: "white",
+        fontSize: "20px"
 
     },
     iconButton: {

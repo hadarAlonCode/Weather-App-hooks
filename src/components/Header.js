@@ -67,7 +67,7 @@ UNSAFE_componentWillMoun() {
                             :
                             <div className="navBar" id={this.props.HeaderStore.isLight ? "light_mode" : "dark_mode"} >
 
-                            <div className="logo" ><strong>Hadar Weather App</strong></div>
+                            <div className="logo" ><strong> Weather App</strong></div>
                 
                             <ToggleButtons/>
             

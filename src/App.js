@@ -15,18 +15,18 @@ class App extends Component {
 
   
 
-  componentDidMount() {
-    this.props.CityStore.getDemiData()
-    this.props.HeaderStore.checkLocalStorage()
-  }
+  // componentDidMount() {
+  //   this.props.CityStore.getDemiData()
+  //   this.props.HeaderStore.checkLocalStorage()
+  // }
 
-//   componentDidMount=()=>{
-//     let CityStore = this.props.CityStore
-//     if(CityStore.isFirstLogin){
-//       CityStore.geoLocation()
-//       this.props.HeaderStore.checkLocalStorage() 
-//     }
-// }
+  componentDidMount=()=>{
+    let CityStore = this.props.CityStore
+    if(CityStore.isFirstLogin){
+      CityStore.geoLocation()
+      this.props.HeaderStore.checkLocalStorage() 
+    }
+}
 
 
   render() {

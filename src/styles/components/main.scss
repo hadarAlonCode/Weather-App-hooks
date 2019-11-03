@@ -56,6 +56,17 @@
 
 @media #{$break2} {
  
+    .weatherBox{
+
+        grid-gap: 0px;
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+        height: 0;
+        width: 100%;
+        margin: auto;
+        padding-top: 32px;
+       
+    }
 
 }
 

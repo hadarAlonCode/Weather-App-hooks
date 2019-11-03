@@ -109,9 +109,25 @@
     
 }
 
-/* middle */
 @media #{$break2} {
-   
+    .citySection{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-right: 20px;
+        height: 100%;
+        grid-gap: 40px;
+
+        .icon_temp{
+            margin-right: 40px;
+            justify-content: end;
+        }
+
+        .citySection_city_text{
+            justify-content: start;
+        }
+
+       }
+
 
 }
 

@@ -25,7 +25,6 @@
 @media  #{$break1} {
    
     .favoritesSection{
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
         width: 330px;
         grid-gap: 30px;
@@ -36,4 +35,15 @@
         margin-bottom: 30px;
     }
         
+    }
+
+    @media #{$break2} {
+
+        .favoritesSection{
+            grid-template-columns: repeat(3, 1fr);
+            width: 600px;
+            grid-gap: 30px;
+               
+        }
+
     }

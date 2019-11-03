@@ -4,7 +4,7 @@
 .navBar{
    display: grid;
    min-height: 68px;
-   grid-template-columns: 1.1fr 1fr 4fr;
+   grid-template-columns: 1fr 1fr 4fr;
    padding-left: 30px;
    padding-right: 30px;
    font-size: 18px;
@@ -39,7 +39,7 @@
 }
 
 #dark_mode{
-   background-color:#13252e;
+   background-color:#2a4350;
    color: white;
 }
 
@@ -105,7 +105,7 @@
    .navBar{
       display: grid;
       min-height: 68px;
-      grid-template-columns: 1.7fr 1fr 4fr;
+      grid-template-columns: 1.8fr 1fr 4fr;
       padding-left: 30px;
       padding-right: 30px;
       font-size: 18px;
