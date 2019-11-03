@@ -110,7 +110,7 @@ export class CityStore {
         }
     }
 
-    @action getLocation = () => {
+    @action geoLocation = () => {
         console.log(navigator.geolocation);
         this.isFirstLogin = false
         if (navigator.geolocation) {

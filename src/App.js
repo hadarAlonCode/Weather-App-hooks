@@ -20,7 +20,7 @@ class App extends Component {
   componentDidMount=()=>{
     let CityStore = this.props.CityStore
     if(CityStore.isFirstLogin){
-      CityStore.getLocation()
+      CityStore.geoLocation()
       this.props.HeaderStore.checkLocalStorage() 
     }
 }

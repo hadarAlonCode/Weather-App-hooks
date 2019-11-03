@@ -51,13 +51,12 @@ const Input = inject("CityStore")(observer(function (props) {
     }
 
     const clickSearch = async () => {
-        if (city == "") {
+        if (city === "") {
             ToastsStore.error("Please enter a valid city in English letters only")
         } else {
 
             let searchCity = await props.CityStore.getLocation(city)
             setCity("")
-            console.log(searchCity);
 
             if (!searchCity) {
                 return ToastsStore.error("Please enter a valid city")
