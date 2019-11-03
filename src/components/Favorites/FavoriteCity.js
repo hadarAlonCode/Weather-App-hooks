@@ -38,7 +38,6 @@ class FavoriteCity extends Component {
 
     render() {
 
-        console.log(moment(this.props.city.conditions.date).format('L'));
 
 
         return (

@@ -75,8 +75,6 @@
 }
 
 
-
-
 .MuiTypography-body1{
     font-size: 18px !important;
 }
@@ -85,7 +83,29 @@
 /* mobile */
 @media  #{$break1} {
    
+    .citySection{
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 
+        't'
+        'b';
+        padding-right: 0;
 
+        .icon_temp{
+            grid-area: b;
+            justify-content: center;
+            text-align: center;
+
+            img{
+                height: 20vw;
+            }
+        }
+
+        .citySection_city_text{
+            grid-area: t; 
+        }
+        
+    }
     
 }
 

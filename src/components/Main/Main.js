@@ -6,6 +6,7 @@ import Input from './Input';
 import CityRow from './CityRow';
 import FiveDays from './FiveDays';
 import FavoriteBtn from './FavoriteBtn';
+import ToggleButtons from '../ToggleButtons';
 
 @inject("CityStore", "HeaderStore")
 @observer
@@ -14,10 +15,10 @@ import FavoriteBtn from './FavoriteBtn';
 
 class Main extends Component {
 
-    colorToggle=()=>{
-        if(this.props.HeaderStore.colorToggle){
+    colorToggle = () => {
+        if (this.props.HeaderStore.colorToggle) {
             return "light-Mode"
-        }else{
+        } else {
             return "dark-Mode"
         }
     }

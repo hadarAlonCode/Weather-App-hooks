@@ -7,3 +7,37 @@
     padding-left: 95px;
 }
     
+
+
+@media  #{$break1} {
+   
+    .mainInput{
+        display: grid;
+        padding-left: 0px;
+    }
+
+    .makeStyles-root-38{
+       width: 59vw !important;
+    
+    }
+
+    .MuiInputBase-root{
+       font-size: 1.4rem !important;
+
+    }
+
+    
+}
+
+/* middle */
+@media #{$break2} {
+   
+
+}
+
+/* full */
+
+ @media #{$break3} {
+     
+    
+}

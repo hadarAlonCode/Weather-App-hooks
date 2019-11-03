@@ -1,3 +1,8 @@
+
+@import "../variables";
+@import "../devices";
+
+
 .favoritesSection{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -14,3 +19,21 @@
     margin-bottom: 50px;
     margin-top: 40px;
 }
+
+
+ 
+@media  #{$break1} {
+   
+    .favoritesSection{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 330px;
+        grid-gap: 30px;
+           
+    }
+
+    .favorites_box{
+        margin-bottom: 30px;
+    }
+        
+    }

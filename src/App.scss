@@ -13,7 +13,7 @@ html, body {
 
 body{
 
-
+  
   .light_mode{
     height: 100%;
     background-image: url($backroundPhoto_light);
@@ -25,6 +25,8 @@ body{
     position: fixed; 
     top: 0; 
     left: 0; 
+    overflow: auto;
+
   }
   
   .dark_mode{
@@ -38,8 +40,18 @@ body{
     position: fixed; 
     top: 0; 
     left: 0; 
+    overflow: auto;
+
   }
 
 
 }
 
+
+  @media  #{$break1} {
+   
+    body{
+      overflow: scrool;
+    }
+    
+  }

@@ -51,5 +51,24 @@
 
 }
 
-
+ 
+@media  #{$break1} {
+   
+  .dailyForecast{
+    width: 290px;
+    margin-right: 0;
+    margin:12px;
+    background-color: rgba(99, 124, 146, 0.616);
+    height: 70px; 
+    border-radius: 10px;
+    font-size: 20px;
+    margin-right: 2%;
+    
+    .dateText{
+      justify-content: start; 
+      margin-left: 12px;
+    }
+  }
+      
+  }
 
