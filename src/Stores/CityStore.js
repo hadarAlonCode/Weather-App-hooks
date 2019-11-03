@@ -42,7 +42,7 @@ export class CityStore {
 
         try {
             this.error = false
-            const response = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.api_key}&q=${location}`)
+            const response = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.api_key}&q=${location}`)
             this.getCurrentWeather(response.data[0].LocalizedName, response.data[0].Key)
 
             return true
@@ -57,7 +57,7 @@ export class CityStore {
 
         try {
             this.error = false
-            const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=${this.api_key}`)
+            const response = await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=${this.api_key}`)
             this.city.name = name
             this.city.cityKey = key
             this.city.weatherText = response.data[0].WeatherText
@@ -77,7 +77,7 @@ export class CityStore {
     @action getFiveDays = async () => {
 
         try {
-            const response = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.city.cityKey}?apikey=${this.api_key}&metric=true`)
+            const response = await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.city.cityKey}?apikey=${this.api_key}&metric=true`)
             let id = 0
             this.city.fiveDays = []
 
@@ -129,7 +129,7 @@ export class CityStore {
 
         try {
             let location = `${position.coords.latitude},${position.coords.longitude}`
-            const response = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.api_key}&q=${location}`)
+            const response = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.api_key}&q=${location}`)
             let cityKey = response.data.Key
             let cityName = response.data.AdministrativeArea.LocalizedName
 
