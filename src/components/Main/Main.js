@@ -7,12 +7,22 @@ import CityRow from './CityRow';
 import FiveDays from './FiveDays';
 import FavoriteBtn from './FavoriteBtn';
 
-@inject("CityStore")
+@inject("CityStore", "HeaderStore")
 @observer
 
 
 
 class Main extends Component {
+
+    colorToggle=()=>{
+        if(this.props.HeaderStore.colorToggle){
+            return "light-Mode"
+        }else{
+            return "dark-Mode"
+        }
+    }
+
+
     render() {
         return (
             <div>
@@ -25,7 +35,7 @@ class Main extends Component {
                     <div>
                         <CityRow />
                     </div>
-                    <div className="fiveDaysBox">
+                    <div className="fiveDaysBox" id={this.colorToggle()}>
                         {this.props.CityStore.city.fiveDays.map(d => <FiveDays day={d} key={d.id} />)}
                     </div>
                 </div>

@@ -1,8 +1,15 @@
 @import "../variables";
 @import "../devices";
 
+
+
+
+.favorite_city_box:hover {
+    transform: scale(1.08);
+}
+
 .favorite_city_box{
-    // margin: 20px;
+    transition: all .2s ease-in-out;
     display: grid;
     background-color: $mainColor;
     height: 250px;

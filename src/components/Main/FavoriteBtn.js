@@ -14,12 +14,6 @@ import "../../styles/components/favoriteBtn.scss"
 
 
 class FavoriteBtn extends Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         favorite: false,
-    //     }
-    // }
 
 
     handleChange = (event) => {
@@ -36,9 +30,8 @@ class FavoriteBtn extends Component {
             <div className="favoriteBtn">
                 <FormGroup row>
                     <FormControlLabel
-                        className="favoriteIcon"
                         onChange={this.handleChange}
-                        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedA" checked={this.props.CityStore.city.isFavorite} />}
+                        control={<Checkbox icon={<FavoriteBorder className="favoriteIcon" style={{color: "white"}} />} checkedIcon={<Favorite className="favoriteIcon"  />} value="checkedA" checked={this.props.CityStore.city.isFavorite} />}
                     // label="Add to favorite"
                     />
                 </FormGroup>

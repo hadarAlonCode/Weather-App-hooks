@@ -13,12 +13,15 @@ export class CityStore {
     @observable city = { name: "", cityKey: 0, weatherText: "", currentTemp: 0, unit: "", fiveDays: [], icon: "1", isFavorite: false, date: "" }
     @observable error = false
 
+    @observable latitude = ""
+    @observable longitude = ""
+
 
     @action getDemiData = () => {
         this.city.name = cityData[0].LocalizedName
         this.city.cityKey = cityData[0].Key
         this.city.weatherText = currentWeatherData[0].WeatherText
-        this.city.currentTemp = currentWeatherData[0].Temperature.Metric.Value
+        this.city.currentTemp = Math.round(currentWeatherData[0].Temperature.Metric.Value)
         this.city.unit = currentWeatherData[0].Temperature.Metric.Unit
         this.city.icon = currentWeatherData[0].WeatherIcon
         this.city.date = currentWeatherData[0].LocalObservationDateTime
@@ -30,7 +33,7 @@ export class CityStore {
 
         for (let d of fiveDaysData.DailyForecasts) {
             id++
-            this.city.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id, icon: d.Day.Icon  })
+            this.city.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id, icon: d.Day.Icon })
         }
     }
 
@@ -51,15 +54,14 @@ export class CityStore {
     }
 
     @action getCurrentWeather = async (name, key) => {
-console.log(name)
-console.log(key)
+
         try {
             this.error = false
             const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=${this.api_key}`)
             this.city.name = name
             this.city.cityKey = key
             this.city.weatherText = response.data[0].WeatherText
-            this.city.currentTemp = response.data[0].Temperature.Metric.Value
+            this.city.currentTemp = Math.round(response.data[0].Temperature.Metric.Value)
             this.city.unit = response.data[0].Temperature.Metric.Unit
             this.city.icon = response.data[0].WeatherIcon
             this.city.date = response.data[0].LocalObservationDateTime
@@ -81,11 +83,10 @@ console.log(key)
 
             for (let d of response.data.DailyForecasts) {
                 id++
-                this.city.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id: id, icon: d.Day.Icon })
+                this.city.fiveDays.push({ day: d.Date, minTemp: Math.round(d.Temperature.Minimum.Value), maxTemp: Math.round(d.Temperature.Maximum.Value), id: id, icon: d.Day.Icon })
             }
         }
         catch (error) {
-            // this.error = true
             return error
         }
     }
@@ -110,6 +111,35 @@ console.log(key)
             return false
 
         }
+    }
+
+    @action getLocation = () => {
+        console.log(navigator.geolocation);
+
+        if (navigator.geolocation) {
+
+            navigator.geolocation.getCurrentPosition(this.showPosition);
+        } else {
+
+            this.getCurrentWeather("Tel Aviv", "215854")
+        }
+    }
+
+    showPosition = async (position) => {
+
+        try {
+            let location = `${position.coords.latitude},${position.coords.longitude}`
+            const response = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.api_key}&q=${location}`)
+            let cityKey = response.data.Key
+            let cityName = response.data.AdministrativeArea.LocalizedName
+
+            this.getCurrentWeather(cityName, cityKey)
+        }
+
+        catch (error) {
+            return error
+        }
+
     }
 }
 

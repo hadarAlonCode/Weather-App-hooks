@@ -4,41 +4,90 @@
 .navBar{
    display: grid;
    min-height: 68px;
-   background-color:#263238a8;
-   grid-auto-flow: column;
-   padding-left: 20px;
-   padding-right: 20px;
+   grid-template-columns: 1fr 1fr 4fr;
+   padding-left: 30px;
+   padding-right: 30px;
    font-size: 18px;
 }
 
-// .navBar .dark_mood{
-//    background-color:#969ea1a8;
-// }
+.lightMode{
+   display: grid;
+    align-content: center;
+    justify-content: start;
+    grid-auto-flow: column;
 
-// .navBar .light_mood{
-//    background-color:#263238a8;
-// }
+    .MuiSvgIcon-root{
+       margin-top: 7px;
+    }
+
+    
+}
+
+#light-Mode{
+   color: black;
+}
+
+#dark-Mode{
+   color: rgb(255, 255, 255);
+}
+
+
+
+#light_mode{
+   background-color:rgba(255, 255, 255, 0.67);
+   color: black;
+}
+
+#dark_mode{
+   background-color:#13252e;
+   color: white;
+}
+
 
 .headerLinks{
   display: grid; 
   grid-auto-flow: column;
   align-content: center;
   justify-content: end; 
-  grid-gap: 20px;
+  grid-gap: 30px;
 }
 
 .logo{
    display: grid; 
    align-content: center;
   justify-content: start; 
-  color: white;
+//   color: white;
 }
 
 
 .link {
-   color: #FFF;
+   color: inherit;
+   // color: #FFF;
    text-decoration: none;
  }
  .link:hover {
     color: rgb(150, 150, 189)
  }
+
+.tempMode{
+   display: grid;
+    align-content: center;
+    justify-content: start;
+    grid-auto-flow: column;
+}
+
+.toggleSection{
+   display: grid;
+   align-content: center;
+   justify-content: start;
+   grid-auto-flow: column;
+   grid-gap: 30px;
+
+   .tempType {
+      font-weight: bold;
+      margin-top: 6px;
+    font-size: 20px;
+    }
+
+   }
+   

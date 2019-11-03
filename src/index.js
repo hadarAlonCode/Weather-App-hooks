@@ -7,10 +7,12 @@ import { Provider } from 'mobx-react'
 
 import CityStore from './Stores/CityStore'
 import FavoriteStore from './Stores/FavoriteStore'
+import HeaderStore from './Stores/HeaderStore'
 
 const stores = {
     CityStore,
-    FavoriteStore
+    FavoriteStore,
+    HeaderStore
  }
 
 ReactDOM.render(<Provider {...stores}> <App /></Provider>, document.getElementById('root'));

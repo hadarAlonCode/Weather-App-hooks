@@ -87,7 +87,7 @@ const Input = inject("CityStore")(observer(function (props) {
                     <IconButton onClick={clickSearch} className={classes.iconButton} aria-label="search">
                         <SearchIcon />
                     </IconButton>
-                    <IconButton color="primary" className={classes.iconButton} aria-label="directions">
+                    <IconButton color="primary" className={classes.iconButton} aria-label="directions" >
                     </IconButton>
                 </Paper>
                 <ToastsContainer store={ToastsStore} />

@@ -15,7 +15,7 @@ export class FavoriteStore {
             const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${this.api_key}`)
             saveCity.conditions = {
                 weatherText: response.data[0].WeatherText,
-                currentTemp: response.data[0].Temperature.Metric.Value,
+                currentTemp: Math.round(response.data[0].Temperature.Metric.Value),
                 unit: response.data[0].Temperature.Metric.Unit,
                 icon: response.data[0].WeatherIcon,
                 date: response.data[0].LocalObservationDateTime     
@@ -37,7 +37,7 @@ export class FavoriteStore {
     @action updateDate = (date , cityKey, name) =>{
         
         this.addToFavorites(cityKey, name)
-        
+
         this.favoriteCities = this.favoriteCities.filter(c => c.conditions.date !== date)
         localStorage.favoriteCities = JSON.stringify(this.favoriteCities)  
 

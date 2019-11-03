@@ -14,7 +14,7 @@ html, body {
 body{
 
 
-  .light_mood{
+  .light_mode{
     height: 100%;
     background-image: url($backroundPhoto_light);
     background-repeat: no-repeat;
@@ -27,7 +27,7 @@ body{
     left: 0; 
   }
   
-  .dark_mood{
+  .dark_mode{
     height: 200vh;
     background-image: url($backroundPhoto_dark);
     background-repeat: no-repeat;

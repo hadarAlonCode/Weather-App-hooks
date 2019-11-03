@@ -1,6 +1,17 @@
 @import "../variables";
 @import "../devices";
 
+
+@keyframes line-width {
+    from {
+      width: 0;
+    }
+    to {
+     width: 220px;
+    }
+  }
+
+
 .citySection{
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -42,6 +53,8 @@
             width: 220px;
             background-color: white;
             margin: auto;
+            animation-name: line-width;
+            animation-duration: 2s;
         }
 
         .city_name{
