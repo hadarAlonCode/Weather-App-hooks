@@ -58,7 +58,7 @@
     width: 290px;
     margin-right: 0;
     margin:12px;
-    background-color: rgba(99, 124, 146, 0.616);
+    background-color: $mediumColor;
     height: 70px; 
     border-radius: 10px;
     font-size: 20px;
@@ -70,5 +70,13 @@
     }
   }
       
+  }
+
+
+  @media  #{$break2} {
+    .dailyForecast{
+     
+      background-color: $mediumColor;
+    }
   }
 
