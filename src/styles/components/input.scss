@@ -6,8 +6,10 @@
     display: grid;
     padding-left: 95px;
 }
-    
 
+.toast {
+    font-family: $font2;
+}
 
 @media  #{$break1} {
    
@@ -25,15 +27,3 @@
     
 }
 
-/* middle */
-@media #{$break2} {
-   
-
-}
-
-/* full */
-
- @media #{$break3} {
-     
-    
-}

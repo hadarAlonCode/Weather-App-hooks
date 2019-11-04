@@ -25,7 +25,7 @@ body{
     position: fixed; 
     top: 0; 
     left: 0; 
-    overflow: auto;
+    overflow: scrool;
 
   }
   
@@ -40,7 +40,7 @@ body{
     position: fixed; 
     top: 0; 
     left: 0; 
-    overflow: auto;
+    overflow: scrool;
 
   }
 
@@ -50,8 +50,14 @@ body{
 
   @media  #{$break1} {
    
-    body{
+    .light_mode{
       overflow: scrool;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .dark_mode{
+      overflow: scrool;
+      -webkit-overflow-scrolling: touch;
     }
     
   }

@@ -7,6 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import "../../styles/components/favoriteBtn.scss"
+import { ToastsContainer, ToastsStore } from 'react-toasts';
 
 
 @inject("CityStore", "FavoriteStore")
@@ -17,9 +18,17 @@ class FavoriteBtn extends Component {
 
     handleChange = (event) => {
         this.props.CityStore.favorite()
-        event.target.checked ? 
-              this.props.FavoriteStore.addToFavorites(this.props.CityStore.city.cityKey, this.props.CityStore.city.name)
-            : this.props.FavoriteStore.removeFromFavorites(this.props.CityStore.city.cityKey)
+
+        if(event.target.checked){
+            this.props.FavoriteStore.addToFavorites(this.props.CityStore.city.cityKey, this.props.CityStore.city.name)
+            ToastsStore.success(`${this.props.CityStore.city.name} added to your favorites`)
+
+        }else{
+            this.props.FavoriteStore.removeFromFavorites(this.props.CityStore.city.cityKey)
+            ToastsStore.info("Removed from favorites")
+
+        }
+      
     };
 
     render() {
@@ -37,6 +46,7 @@ class FavoriteBtn extends Component {
                         checked={this.props.CityStore.city.isFavorite} />}
                     />
                 </FormGroup>
+                <ToastsContainer store={ToastsStore} />
             </div>
         );
     }
