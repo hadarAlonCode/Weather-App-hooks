@@ -4,8 +4,6 @@ Display current weather and a 5-day forecast of the searched location.
 
 https://weather-app-hadar.herokuapp.com/
 
- * Herolo Home Assignment 
-
  ### Built With
 
  - React
