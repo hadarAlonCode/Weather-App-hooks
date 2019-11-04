@@ -40,7 +40,7 @@ body{
     position: fixed; 
     top: 0; 
     left: 0; 
-    overflow: scrool;
+    overflow: scroll;
 
   }
 
@@ -51,12 +51,10 @@ body{
   @media  #{$break1} {
    
     .light_mode{
-      overflow: scroll;
       -webkit-overflow-scrolling: touch;
     }
 
     .dark_mode{
-      overflow: scroll;
       -webkit-overflow-scrolling: touch;
     }
     
