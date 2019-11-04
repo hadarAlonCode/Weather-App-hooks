@@ -4,9 +4,6 @@ import { observer, inject } from 'mobx-react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import moment from 'moment'
 
-
-
-
 @inject("CityStore", "FavoriteStore", "HeaderStore")
 @observer
 
@@ -37,9 +34,6 @@ class FavoriteCity extends Component {
 
 
     render() {
-
-
-
         return (
             <Link style={{ textDecoration: 'none' }} to='/' onClick={this.getCity}>
                 <div className="favorite_city_box">

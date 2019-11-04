@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { observer, inject } from 'mobx-react'
 import { ToastsContainer, ToastsStore } from 'react-toasts';
-
 import "../../styles/components/input.scss"
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Grid from '@material-ui/core/Grid';
 
@@ -20,7 +17,6 @@ const useStyles = makeStyles(theme => ({
         width: "50vw",
         backgroundColor: "rgba(255, 255, 255, 0.295)",
 
-        // @media "(max-width: 765px)"
     },
     input: {
         marginLeft: theme.spacing(1),
@@ -47,7 +43,6 @@ const Input = inject("CityStore")(observer(function (props) {
         if (e.target.value.match(/^[A-Za-z]/)) {
             setCity(e.target.value)
         } else {
-            // ToastsStore.error("Please enter a valid city in English letters only") 
             return false
         }
 
@@ -66,12 +61,13 @@ const Input = inject("CityStore")(observer(function (props) {
             }
 
         }
-
-
-
     }
 
-
+    const keyPressed = (event) => {
+        if (event.key === "Enter") {
+            clickSearch()
+        }
+    }
 
     return (
         <div className="mainInput">
@@ -85,6 +81,7 @@ const Input = inject("CityStore")(observer(function (props) {
                         className={classes.input}
                         placeholder="Search City"
                         inputProps={{ 'aria-label': 'Search City' }}
+                        onKeyPress={keyPressed}
                     />
                     <IconButton onClick={clickSearch} className={classes.iconButton} aria-label="search">
                         <SearchIcon />

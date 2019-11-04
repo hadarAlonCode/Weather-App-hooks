@@ -10,11 +10,10 @@ import Brightness5Icon from '@material-ui/icons/Brightness5';
 @observer
 
 class ToggleButtons extends Component {
-  
+
 
     changeMode = () => {
         this.props.HeaderStore.changeMode()
-
     };
 
     colorToggle = () => {
@@ -29,40 +28,36 @@ class ToggleButtons extends Component {
         this.props.HeaderStore.changeTemp()
     }
 
-
     render() {
-
-    
         return (
-       
-                
-                            <div className="toggleSection">
-                                <div className="lightMode" id={this.colorToggle()}>
-                                    <Brightness5Icon />
-                                    <Switch
-                                        checked={!this.props.HeaderStore.isLight}
-                                        onChange={this.changeMode}
-                                        value="checkedB"
-                                        color="default"
-                                        inputProps={{ 'aria-label': 'primary checkbox' }}
-                                    />
-                                    <Brightness3Icon />
-                                </div>
-                                <div className="tempMode" id={this.colorToggle()}>
-                                    <div className="tempType">°C</div>
-                                    <Switch
-                                        checked={!this.props.HeaderStore.celsiusType}
-                                        onChange={this.changeTempMode}
-                                        value="checkedA"
-                                        color="default"
-                                        inputProps={{ 'aria-label': 'primary checkbox' }}
-                                    />
-                                    <div className="tempType">°F</div>
-                                </div>
-            
-                            </div>
-            
-        )}
+            <div className="toggleSection">
+                <div className="lightMode" id={this.colorToggle()}>
+                    <Brightness5Icon />
+                    <Switch
+                        checked={!this.props.HeaderStore.isLight}
+                        onChange={this.changeMode}
+                        value="checkedB"
+                        color="default"
+                        inputProps={{ 'aria-label': 'primary checkbox' }}
+                    />
+                    <Brightness3Icon />
+                </div>
+                <div className="tempMode" id={this.colorToggle()}>
+                    <div className="tempType">°C</div>
+                    <Switch
+                        checked={!this.props.HeaderStore.celsiusType}
+                        onChange={this.changeTempMode}
+                        value="checkedA"
+                        color="default"
+                        inputProps={{ 'aria-label': 'primary checkbox' }}
+                    />
+                    <div className="tempType">°F</div>
+                </div>
+
+            </div>
+
+        )
+    }
 }
 
 export default ToggleButtons;

@@ -9,7 +9,17 @@ import fiveDaysData from "../Json/fiveDays.json"
 export class CityStore {
 
     api_key = "mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf"
-    @observable city = { name: "", cityKey: 0, weatherText: "", currentTemp: 0, unit: "", fiveDays: [], icon: "1", isFavorite: false, date: "" }
+    @observable city = {
+        name: "",
+        cityKey: 0,
+        weatherText: "",
+        currentTemp: 0,
+        unit: "",
+        fiveDays: [],
+        icon: "1",
+        isFavorite: false,
+        date: ""
+    }
     @observable error = false
     @observable isFirstLogin = true
 
@@ -66,7 +76,6 @@ export class CityStore {
             this.getFiveDays()
         }
         catch (error) {
-            // this.error = true
             return error
         }
     }
@@ -111,7 +120,6 @@ export class CityStore {
     }
 
     @action geoLocation = () => {
-        console.log(navigator.geolocation);
         this.isFirstLogin = false
         if (navigator.geolocation) {
 

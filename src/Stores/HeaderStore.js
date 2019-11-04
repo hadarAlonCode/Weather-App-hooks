@@ -3,27 +3,27 @@ import { observable, action } from 'mobx'
 
 export class HeaderStore {
 
-    @observable isLight =  true
+    @observable isLight = true
     @observable celsiusType = true
 
-    @observable saveMode = JSON.parse(localStorage.saveMode || "[]" )
-    @observable isCelsius = JSON.parse(localStorage.isCelsius || "[]" )
+    @observable saveMode = JSON.parse(localStorage.saveMode || "[]")
+    @observable isCelsius = JSON.parse(localStorage.isCelsius || "[]")
 
 
-    @action checkLocalStorage = () =>{
+    @action checkLocalStorage = () => {
 
-        if(this.saveMode !== undefined ){
+        if (this.saveMode !== undefined) {
             this.isLight = this.saveMode
         }
 
-        if(this.isCelsius !== undefined){
+        if (this.isCelsius !== undefined) {
             this.celsiusType = this.isCelsius
-            
+
         }
     }
 
     @action changeMode = () => {
-        
+
         if (this.isLight == true) {
             this.isLight = false
             localStorage.saveMode = this.isLight

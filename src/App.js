@@ -12,14 +12,6 @@ import Favorites from "./components/Favorites"
 
 class App extends Component {
 
-
-  
-
-  // componentDidMount() {
-  //   this.props.CityStore.getDemiData()
-  //   this.props.HeaderStore.checkLocalStorage()
-  // }
-
   componentDidMount=()=>{
     let CityStore = this.props.CityStore
     if(CityStore.isFirstLogin){
