@@ -1,9 +1,7 @@
 
 import { observable, action } from 'mobx'
 import axios from 'axios';
-import cityData from "../Json/city.json"
-import currentWeatherData from "../Json/currentWeather.json"
-import fiveDaysData from "../Json/fiveDays.json"
+
 
 
 export class CityStore {
@@ -22,28 +20,6 @@ export class CityStore {
     }
     @observable error = false
     @observable isFirstLogin = true
-
-
-    @action getDemiData = () => {
-        this.city.name = cityData[0].LocalizedName
-        this.city.cityKey = cityData[0].Key
-        this.city.weatherText = currentWeatherData[0].WeatherText
-        this.city.currentTemp = Math.round(currentWeatherData[0].Temperature.Metric.Value)
-        this.city.unit = currentWeatherData[0].Temperature.Metric.Unit
-        this.city.icon = currentWeatherData[0].WeatherIcon
-        this.city.date = currentWeatherData[0].LocalObservationDateTime
-        this.city.isFavorite = this.localFavorite(cityData[0].Key)
-
-
-
-        let id = 0
-
-        for (let d of fiveDaysData.DailyForecasts) {
-            id++
-            this.city.fiveDays.push({ day: d.Date, minTemp: d.Temperature.Minimum.Value, maxTemp: d.Temperature.Maximum.Value, id, icon: d.Day.Icon })
-        }
-    }
-
 
     @action getLocation = async (location) => {
 
@@ -96,6 +72,15 @@ export class CityStore {
             return error
         }
     }
+
+    @action iconsFunc = (icon) => {
+        if (icon <= 9) {
+            return "https://developer.accuweather.com/sites/default/files/0" + icon + "-s.png"
+        } else {
+            return "https://developer.accuweather.com/sites/default/files/" + icon + "-s.png"
+        }
+    }
+
 
     @action favorite = () => {
         this.city.isFavorite ? this.city.isFavorite = false : this.city.isFavorite = true

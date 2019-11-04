@@ -24,14 +24,9 @@ export class HeaderStore {
 
     @action changeMode = () => {
 
-        if (this.isLight == true) {
-            this.isLight = false
-            localStorage.saveMode = this.isLight
+        this.isLight = this.isLight ? false : true
+        localStorage.saveMode = this.isLight
 
-        } else {
-            this.isLight = true
-            localStorage.saveMode = this.isLight
-        }
     }
 
 
@@ -42,16 +37,10 @@ export class HeaderStore {
 
 
     @action changeTemp = () => {
-        if (this.celsiusType) {
-            this.celsiusType = false
-            localStorage.isCelsius = this.celsiusType
 
-        } else {
+        this.celsiusType = this.celsiusType ? false : true
+        localStorage.isCelsius = this.celsiusType
 
-            this.celsiusType = true
-            localStorage.isCelsius = this.celsiusType
-
-        }
     }
 
 }

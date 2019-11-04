@@ -12,11 +12,14 @@ import FavoriteBtn from './FavoriteBtn';
 class Main extends Component {
 
     colorToggle = () => {
-        if (this.props.HeaderStore.colorToggle) {
-            return "light-Mode"
-        } else {
-            return "dark-Mode"
-        }
+        
+        let light =  "light-Mode" 
+        let dark = "dark-Mode"
+
+        let idMode = this.props.HeaderStore.colorToggle ? light : dark
+
+        return idMode
+        
     }
 
 

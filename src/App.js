@@ -13,6 +13,7 @@ import Favorites from "./components/Favorites"
 class App extends Component {
 
   componentDidMount=()=>{
+    
     let CityStore = this.props.CityStore
     if(CityStore.isFirstLogin){
       CityStore.geoLocation()

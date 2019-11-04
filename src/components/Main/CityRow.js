@@ -9,20 +9,13 @@ import "../../styles/components/cityRow.scss"
 class CityRow extends Component {
 
 
-    iconsFunc = () => {
-        if (this.props.CityStore.city.icon <= 9) {
-            return "https://developer.accuweather.com/sites/default/files/0" + this.props.CityStore.city.icon + "-s.png"
-        } else {
-            return "https://developer.accuweather.com/sites/default/files/" + this.props.CityStore.city.icon + "-s.png"
-        }
-    }
 
     render() {
 
         return (
             <div className="citySection">
                 <div className="icon_temp">
-                    <div><img alt="weather" src={this.iconsFunc()} className="weatherPhoto" /></div>
+                    <div><img alt="weather" src={this.props.CityStore.iconsFunc(this.props.CityStore.city.icon)} className="weatherPhoto" /></div>
                     <div className="citySection_temp">{this.props.HeaderStore.celsiusType ? this.props.CityStore.city.currentTemp + "°C" : this.props.HeaderStore.celToFer(this.props.CityStore.city.currentTemp)}</div>
                 </div>
                 <div className="citySection_city_text">

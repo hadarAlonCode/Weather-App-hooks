@@ -23,7 +23,7 @@ class Header extends Component {
         window.addEventListener("resize", this.updatePredicate);
     }
 
-    UNSAFE_componentWillMoun() {
+    UNSAFE_componentWillMount() {
         window.removeEventListener("resize", this.updatePredicate);
     }
 
