@@ -21,14 +21,12 @@ class FavoriteBtn extends Component {
 
         if(event.target.checked){
             this.props.FavoriteStore.addToFavorites(this.props.CityStore.city.cityKey, this.props.CityStore.city.name)
-            ToastsStore.success(`${this.props.CityStore.city.name} added to your favorites`)
+            ToastsStore.success(`${this.props.CityStore.city.name} added to your favorites!`)
 
         }else{
             this.props.FavoriteStore.removeFromFavorites(this.props.CityStore.city.cityKey)
             ToastsStore.info("Removed from favorites")
-
         }
-      
     };
 
     render() {

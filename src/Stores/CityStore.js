@@ -6,7 +6,7 @@ import axios from 'axios';
 
 export class CityStore {
 
-    api_key = "mypsvN2qDB3xSjqqFMTLOhJVTcYfmaZf"
+    api_key = "Nb1xFn0braCp8CCG9iI4L0EX7Ozgxo9e"
     @observable city = {
         name: "",
         cityKey: 0,
