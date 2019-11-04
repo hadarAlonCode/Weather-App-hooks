@@ -51,12 +51,12 @@ body{
   @media  #{$break1} {
    
     .light_mode{
-      overflow: scrool;
+      overflow: scroll;
       -webkit-overflow-scrolling: touch;
     }
 
     .dark_mode{
-      overflow: scrool;
+      overflow: scroll;
       -webkit-overflow-scrolling: touch;
     }
     
