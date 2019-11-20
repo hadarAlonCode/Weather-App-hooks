@@ -1,10 +1,55 @@
 @import "../variables";
 @import "../devices";
 
+@keyframes line-width-break1 {
+    0% {
+      width:30px;
+    }
+    100% {
+      width:200px;
+    }
+}
+
+@keyframes line-width-break3 {
+    0% {
+      width:  30px;
+    }
+    100% {
+      width:  500px;
+    }
+}
 
 .mainInput{
     display: grid;
-    padding-left: 95px;
+    grid-auto-flow: column;
+    align-content: center;
+    justify-content: center;
+
+    .input{
+        display: grid;
+        background-color: #e0e0e0c2;
+        animation: line-width-break3 3s ;
+        width: 500px;
+        height: 52px;
+        border-radius: 100px;
+        margin: auto;
+        font-size: 20px;
+        border: 0px solid;
+        text-indent: 30px;
+        font-family: $font2;
+        box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);
+    }
+
+    .MuiFab-root {
+        background-color: #e0e0e0c2 !important;
+    }
+
+    .searchIcon{
+        display: grid;
+        align-content: center;
+        justify-content: start;
+        font-size: 35px;
+    }  
 }
 
 .toast {
@@ -12,14 +57,12 @@
 }
 
 @media  #{$break1} {
-   
     .mainInput{
-        display: grid;
-        padding-left: 0px;
-    }
-    .MuiInputBase-root{
-       font-size: 1.4rem !important;
-
-    }
+        padding-left: 10px;
+        .input{
+            animation: line-width-break1 3s ;
+            width: 200px;
+        }
+    } 
 }
 

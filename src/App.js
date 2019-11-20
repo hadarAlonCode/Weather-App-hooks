@@ -1,41 +1,30 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { observer, inject } from 'mobx-react'
 import './App.scss';
 import Header from './components/Header';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Main from "./components/Main/Main"
-import Favorites from "./components/Favorites"
+import Favorites from "./components/Favorites/Favorites"
 
+const App = inject("CityStore", "HeaderStore")(observer(function (props) {
 
-@inject("CityStore", "HeaderStore")
-@observer
-
-class App extends Component {
-
-  componentDidMount=()=>{
-    
-    let CityStore = this.props.CityStore
-    if(CityStore.isFirstLogin){
+  useEffect(() => {
+    let CityStore = props.CityStore
+    if (CityStore.isFirstLogin) {
       CityStore.geoLocation()
-      this.props.HeaderStore.checkLocalStorage() 
+      props.HeaderStore.checkLocalStorage()
     }
-}
+  }, [])
 
-
-  render() {
-    return (
-      <Router>
-        <div className={this.props.HeaderStore.isLight ? "light_mode" : "dark_mode" }>
-          <Header />
-
-          <Route path="/" exact render={() => <Main />} />
-
-          <Route path="/favorites" exact render={() => <Favorites />} />
-        </div>
-      </Router>
-    )
-  }
-}
-
+  return (
+    <Router>
+      <div className={props.HeaderStore.isLight ? "light_mode" : "dark_mode"}>
+        <Header />
+        <Route path="/" exact render={() => <Main />} />
+        <Route path="/favorites" exact render={() => <Favorites />} />
+      </div>
+    </Router>
+  )
+}));
 
 export default App;

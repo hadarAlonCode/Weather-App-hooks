@@ -1,9 +1,6 @@
 @import "../variables";
 @import "../devices";
 
-
-
-
 .favorite_city_box:hover {
     transform: scale(1.08);
 }
@@ -37,11 +34,9 @@
     img{
         height: 50px;
     }
-
 }
 
 @media  #{$break1} {
-   
     .favorite_city_box{
         background-color: $mediumColor
     }

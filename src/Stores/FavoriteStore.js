@@ -1,13 +1,11 @@
 
-import { observable, computed, action } from 'mobx'
+import { observable, action } from 'mobx'
 import axios from 'axios';
 
 export class FavoriteStore {
 
     api_key = "Nb1xFn0braCp8CCG9iI4L0EX7Ozgxo9e"    
     @observable favoriteCities = JSON.parse(localStorage.favoriteCities || "[]")
-
-
 
     @action addToFavorites = async (cityKey, name) => {
         let saveCity = { key: cityKey, name: name, isFavorite: true }
@@ -28,28 +26,18 @@ export class FavoriteStore {
         }
     }
 
-
-
     @action removeFromFavorites = (cityKey) => {
         this.favoriteCities = this.favoriteCities.filter(c => c.key !== cityKey)
         localStorage.favoriteCities = JSON.stringify(this.favoriteCities)
     }
-
-
-
-
+    
     @action updateDate = (date, cityKey, name) => {
         this.addToFavorites(cityKey, name)
         this.favoriteCities = this.favoriteCities.filter(c => c.conditions.date !== date)
         localStorage.favoriteCities = JSON.stringify(this.favoriteCities)
-
-
     }
 
 }
-
-
-
 
 export default new FavoriteStore()
 

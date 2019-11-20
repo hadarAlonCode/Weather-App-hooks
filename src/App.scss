@@ -1,9 +1,6 @@
 @import "./styles/variables";
 @import "./styles/devices";
 
-// h1 {
-//   color: $myColor;
-// }
 
 html, body {
   height: 100%;
@@ -12,51 +9,40 @@ html, body {
 }
 
 body{
-
-  
   .light_mode{
-    height: 100%;
-    background-image: url($backroundPhoto_light);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    overflow: scroll;
-
-  }
+      height: 100%;
+      background-image: url($backroundPhoto_light);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      overflow: auto;
+  }  
   
   .dark_mode{
-    height: 200vh;
-    background-image: url($backroundPhoto_dark);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    overflow: scroll;
-
+      height: 200vh;
+      background-image: url($backroundPhoto_dark);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      overflow: scroll;
   }
-
-
 }
 
-
-  @media  #{$break1} {
-   
+@media  #{$break1} {  
     .light_mode{
-
       -webkit-overflow-scrolling: touch;
     }
-
     .dark_mode{
       -webkit-overflow-scrolling: touch;
     }
-    
-  }
+}

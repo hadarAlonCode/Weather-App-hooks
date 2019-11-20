@@ -1,65 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { observer, inject } from 'mobx-react'
-import { ToastsContainer, ToastsStore } from 'react-toasts';
+import { ToastsStore } from 'react-toasts';
 import "../../styles/components/input.scss"
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import Grid from '@material-ui/core/Grid';
-
+import { makeStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        alignItems: 'center',
-        width: "50vw",
-        backgroundColor: "rgba(255, 255, 255, 0.295)",
-
-    },
-    input: {
-        marginLeft: theme.spacing(1),
-        flex: 1,
-        color: "white",
-        fontSize: "20px"
-
-    },
-    iconButton: {
-        padding: 7,
-        color: "white"
+    fab: {
+        margin: theme.spacing(1),
     }
-
 }));
 
 const Input = inject("CityStore")(observer(function (props) {
-
-
+    const classes = useStyles()
     const [city, setCity] = useState("")
-    const classes = useStyles();
+    const [char, setChar] = useState("")
 
-
-    const handleInput = (e) => {
-        if (e.target.value.match(/^[A-Za-z]/)) {
-            setCity(e.target.value)
-        } else {
+    const onChange = (e) => {
+        let val = e.target.value.replace(/[^A-Za-z\s]/gi, "");
+        setChar(val)
+        if (e.target.value.match(/^[A-Za-z\s]/, "")) {
+            props.CityStore.getAutoComplete(e.target.value)
+        }
+        else {
+            ToastsStore.error("Please enter a valid city in English letters only")
             return false
         }
+    }
 
+    const handleInput = (e) => {
+        setCity(e.target.value)
     }
 
     const clickSearch = async () => {
         if (city === "") {
             ToastsStore.error("Please enter a valid city in English letters only")
         } else {
-
-            let searchCity = await props.CityStore.getLocation(city)
+            let citySearch = city.trim()
+            let searchCity = await props.CityStore.getLocation(citySearch)
             setCity("")
-
             if (!searchCity) {
                 return ToastsStore.error("Please enter a valid city")
             }
-
         }
     }
 
@@ -71,30 +54,14 @@ const Input = inject("CityStore")(observer(function (props) {
 
     return (
         <div className="mainInput">
-            <Grid container justify="center">
-
-                <Paper className={classes.root}>
-                    <IconButton className={classes.iconButton} aria-label="menu">
-                    </IconButton>
-                    <InputBase
-                        onInput={handleInput}
-                        className={classes.input}
-                        placeholder="Search City"
-                        inputProps={{ 'aria-label': 'Search City' }}
-                        onKeyPress={keyPressed}
-                    />
-                    <IconButton onClick={clickSearch} className={classes.iconButton} aria-label="search">
-                        <SearchIcon />
-                    </IconButton>
-                    <IconButton color="primary" className={classes.iconButton} aria-label="directions" >
-                    </IconButton>
-                </Paper>
-                <ToastsContainer store={ToastsStore} />
-            </Grid>
-
-
+            <input className="input" type="text" onChange={onChange} value={char} list="browsers" onKeyPress={keyPressed} placeholder="Search City" onInput={handleInput}></input>
+            <datalist id="browsers">
+                {props.CityStore.autoCompleteLocation.map((c, i) => <option key={c.Key}>{c.LocalizedName}</option>)}
+            </datalist>
+            <Fab aria-label="add" className={classes.fab}>
+                <SearchIcon className="searchIcon" onClick={clickSearch}>Search</SearchIcon>
+            </Fab>
         </div>
-
     );
 
 }))

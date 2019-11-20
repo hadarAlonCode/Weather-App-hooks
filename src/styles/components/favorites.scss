@@ -1,7 +1,5 @@
-
 @import "../variables";
 @import "../devices";
-
 
 .favoritesSection{
     display: grid;
@@ -9,8 +7,7 @@
     width: 1100px;
     text-align: center;
     margin: auto;
-    grid-gap: 55px;
-       
+    grid-gap: 55px;   
 }
 
 .favorites_title{
@@ -20,30 +17,22 @@
     margin-top: 40px;
 }
 
-
- 
 @media  #{$break1} {
-   
     .favoritesSection{
         grid-template-columns: repeat(2, 1fr);
         width: 330px;
-        grid-gap: 30px;
-           
+        grid-gap: 30px;     
     }
 
     .favorites_box{
         margin-bottom: 30px;
-    }
-        
-    }
+    }       
+}
 
-    @media #{$break2} {
-
-        .favoritesSection{
+@media #{$break2} {
+    .favoritesSection{
             grid-template-columns: repeat(3, 1fr);
             width: 600px;
-            grid-gap: 30px;
-               
-        }
-
+            grid-gap: 30px;              
     }
+}

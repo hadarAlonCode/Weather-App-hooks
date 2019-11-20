@@ -28,55 +28,49 @@
     animation-duration: 2s;
     
 
-.dateNumb{
-  display: grid; 
-  align-content: center;
-  justify-content: start; 
-}
-
-.dateText{
+  .dateNumb{
     display: grid; 
     align-content: center;
+    justify-content: start; 
+  }
+
+  .dateText{
+      display: grid; 
+      align-content: center;
+  }
+
+  .dailyForecast_icon{
+      display: grid; 
+      align-content: center;
+  }
+
+  .dailyForecast_temp{
+      display: grid; 
+      align-content: center;
+  }
 }
 
-.dailyForecast_icon{
-    display: grid; 
-    align-content: center;
-}
-
-.dailyForecast_temp{
-    display: grid; 
-    align-content: center;
-}
-
-}
-
- 
 @media  #{$break1} {
-   
-  .dailyForecast{
-    width: 300px;
-    margin-right: 0;
-    margin:12px;
-    background-color: $mediumColor;
-    height: 70px; 
-    border-radius: 10px;
-    font-size: 20px;
-    margin-right: 2%;
-    
-    .dateText{
-      justify-content: start; 
-      margin-left: 12px;
-    }
-  }
-      
-  }
-
-
-  @media  #{$break2} {
     .dailyForecast{
-     
+      width: 300px;
+      margin-right: 0;
+      margin:12px;
+      background-color: $mediumColor;
+      height: 70px; 
+      border-radius: 10px;
+      font-size: 20px;
+      margin-right: 2%;
+      
+      .dateText{
+        justify-content: start; 
+        margin-left: 12px;
+      }
+    }     
+}
+
+@media  #{$break2} {
+    .dailyForecast{
       background-color: $mediumColor;
     }
-  }
+}
 

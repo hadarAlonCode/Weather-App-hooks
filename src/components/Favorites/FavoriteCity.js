@@ -1,43 +1,36 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import "../../styles/components/favoriteCity.scss"
 import { observer, inject } from 'mobx-react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-@inject("CityStore", "FavoriteStore", "HeaderStore")
-@observer
+const FavoriteCity = inject("CityStore", "FavoriteStore", "HeaderStore")(observer(function (props) {
 
-class FavoriteCity extends Component {
-
-
-    getCity = () => {
-        this.props.CityStore.getCurrentWeather(this.props.city.name, this.props.city.key)
+    const getCity = () => {
+        props.CityStore.getCurrentWeather(props.city.name, props.city.key)
     }
 
-    dateChecker = () => {
-        if (moment(this.props.city.conditions.date).format('L') !== moment(Date.now()).format('L')) {
-            this.props.FavoriteStore.updateDate(this.props.city.conditions.date, this.props.city.key, this.props.city.name)
+    const dateChecker = () => {
+        if (moment(props.city.conditions.date).format('L') !== moment(Date.now()).format('L')) {
+            props.FavoriteStore.updateDate(props.city.conditions.date, props.city.key, props.city.name)
         }
     }
 
-    componentDidMount = () => {
-        this.dateChecker()
-    }
+    useEffect(() => {        
+        dateChecker()
+    }, [])
 
 
-    render() {
-        return (
-            <Link style={{ textDecoration: 'none' }} to='/' onClick={this.getCity}>
-                <div className="favorite_city_box">
-                    <div className="favorite_name">{this.props.city.name}</div>
-                    <div className="favorite_temp">{this.props.HeaderStore.celsiusType ? this.props.city.conditions.currentTemp + "°C" : this.props.HeaderStore.celToFer(this.props.city.conditions.currentTemp)} </div>
-                    <div className="favorite_icon"><img alt="Weather Icon" src={this.props.CityStore.iconsFunc(this.props.city.conditions.icon)} className="" /></div>
-                    <div className="favorite_text">{this.props.city.conditions.weatherText}</div>
-                </div>
-            </Link>
-
-        );
-    }
-}
+    return (
+        <Link style={{ textDecoration: 'none' }} to='/' onClick={getCity}>
+            <div className="favorite_city_box">
+                <div className="favorite_name">{props.city.name}</div>
+                <div className="favorite_temp">{props.HeaderStore.celsiusType ? props.city.conditions.currentTemp + "°C" : props.HeaderStore.celToFer(props.city.conditions.currentTemp)} </div>
+                <div className="favorite_icon"><img alt="Weather Icon" src={props.CityStore.iconsFunc(props.city.conditions.icon)} /></div>
+                <div className="favorite_text">{props.city.conditions.weatherText}</div>
+            </div>
+        </Link>
+    );
+}))
 
 export default FavoriteCity;

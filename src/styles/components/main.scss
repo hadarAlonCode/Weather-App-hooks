@@ -24,49 +24,35 @@
     justify-content: center;
 }
 
-
 #light-Mode{
     color: black;
  }
  
- #dark-Mode{
+#dark-Mode{
     color: rgb(255, 255, 255);
- }
+}
     
-
-
-
- 
-@media  #{$break1} {
-   
-.weatherBox{
-
-    display: grid;
+@media  #{$break1} {   
+    .weatherBox{
     grid-gap: 0px;
     grid-template-columns: none;
     grid-template-rows: 1fr 1fr;
     height: 0;
     width: 100%;
     margin: auto;
-    padding-top: 32px;
-   
-}
-    
+    padding-top: 32px;  
+    }   
 }
 
-@media #{$break2} {
- 
+@media  #{$break2} {   
     .weatherBox{
-
-        grid-gap: 0px;
-        grid-template-columns: none;
-        grid-template-rows: 1fr 1fr;
-        height: 0;
-        width: 100%;
-        margin: auto;
-        padding-top: 32px;
-       
-    }
-
+    grid-gap: 0px;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
+    height: 0;
+    width: 100%;
+    margin: auto;
+    padding-top: 32px;  
+    }   
 }
 

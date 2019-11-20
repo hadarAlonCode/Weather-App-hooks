@@ -6,7 +6,8 @@ https://weather-app-hadar.herokuapp.com/
 
  ### Built With
 
- - React
+ - React 
+ - Hooks
  - npm packages
  - Material - ui
 

@@ -1,12 +1,9 @@
-
 import { observable, action } from 'mobx'
 import axios from 'axios';
 
-
-
 export class CityStore {
-
     api_key = "Nb1xFn0braCp8CCG9iI4L0EX7Ozgxo9e"
+
     @observable city = {
         name: "",
         cityKey: 0,
@@ -18,26 +15,39 @@ export class CityStore {
         isFavorite: false,
         date: ""
     }
+
+    @observable autoCompleteLocation = []
     @observable error = false
     @observable isFirstLogin = true
 
-    @action getLocation = async (location) => {
+    @action getAutoComplete = async (word) => {
 
+        if (/[^\s]/.test(word)) {
+            try {
+                let wordNoSpace = word.trim()
+                const response = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.api_key}&q=${wordNoSpace}`)
+                this.autoCompleteLocation = await response.data
+                return true
+            }
+            catch (error) {
+                return false
+            }
+        }
+    }
+
+    @action getLocation = async (location) => {
         try {
             this.error = false
             const response = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.api_key}&q=${location}`)
             this.getCurrentWeather(response.data[0].LocalizedName, response.data[0].Key)
-
             return true
         }
         catch (error) {
-
             return false
         }
     }
 
     @action getCurrentWeather = async (name, key) => {
-
         try {
             this.error = false
             const response = await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=${this.api_key}`)
@@ -57,7 +67,6 @@ export class CityStore {
     }
 
     @action getFiveDays = async () => {
-
         try {
             const response = await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.city.cityKey}?apikey=${this.api_key}&metric=true`)
             let id = 0
@@ -81,7 +90,6 @@ export class CityStore {
         }
     }
 
-
     @action favorite = () => {
         this.city.isFavorite ? this.city.isFavorite = false : this.city.isFavorite = true
     }
@@ -89,51 +97,39 @@ export class CityStore {
     @action localFavorite = (key) => {
         if (localStorage.favoriteCities) {
             let local_Storage = JSON.parse(localStorage.favoriteCities)
-            let city = local_Storage.find(c => c.key == key)
-
+            let city = local_Storage.find(c => c.key === key)
             if (city) {
                 return true
-
             } else {
                 return false
             }
-
         } else {
             return false
-
         }
     }
 
     @action geoLocation = () => {
         this.isFirstLogin = false
         if (navigator.geolocation) {
-
             navigator.geolocation.getCurrentPosition(this.showPosition);
         } else {
-
             this.getCurrentWeather("Tel Aviv", "215854")
         }
     }
 
     showPosition = async (position) => {
-
         try {
             let location = `${position.coords.latitude},${position.coords.longitude}`
             const response = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.api_key}&q=${location}`)
             let cityKey = response.data.Key
             let cityName = response.data.AdministrativeArea.LocalizedName
-
             this.getCurrentWeather(cityName, cityKey)
         }
-
         catch (error) {
             return error
         }
-
     }
 }
-
-
 
 export default new CityStore()
 
