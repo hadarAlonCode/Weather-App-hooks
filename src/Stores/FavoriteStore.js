@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export class FavoriteStore {
 
-    api_key = "Nb1xFn0braCp8CCG9iI4L0EX7Ozgxo9e"    
+    api_key = "uuUVSmGWQ9hWzLPzNCbaaSnNtLr4ykjO"    
     @observable favoriteCities = JSON.parse(localStorage.favoriteCities || "[]")
 
     @action addToFavorites = async (cityKey, name) => {
