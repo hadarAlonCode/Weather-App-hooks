@@ -2,7 +2,7 @@ import { observable, action } from 'mobx'
 import axios from 'axios';
 
 export class CityStore {
-    api_key = "Nb1xFn0braCp8CCG9iI4L0EX7Ozgxo9e"
+    api_key = "uuUVSmGWQ9hWzLPzNCbaaSnNtLr4ykjO"
 
     @observable city = {
         name: "",
