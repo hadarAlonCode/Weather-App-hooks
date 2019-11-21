@@ -10,6 +10,7 @@ https://weather-app-hadar.herokuapp.com/
  - Hooks
  - npm packages
  - Material - ui
+ - AccuWeather Api - 50 calls/day 
 
  ### features
 
