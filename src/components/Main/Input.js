@@ -54,7 +54,16 @@ const Input = inject("CityStore")(observer(function (props) {
 
     return (
         <div className="mainInput">
-            <input className="input" type="text" autoComplete="off" onChange={onChange} value={char} list="pasta" onKeyPress={keyPressed} placeholder="Search City" onInput={handleInput}></input>
+            <input className="input"
+                type="text"
+                autoComplete="off"
+                onChange={onChange}
+                value={char}
+                list="pasta"
+                onKeyPress={keyPressed}
+                placeholder="Search City"
+                onInput={handleInput}>
+            </input>
             <datalist id="pasta">
                 {props.CityStore.autoCompleteLocation.map((c, i) => <option key={c.Key}>{c.LocalizedName}</option>)}
             </datalist>

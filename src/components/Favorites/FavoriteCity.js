@@ -16,10 +16,9 @@ const FavoriteCity = inject("CityStore", "FavoriteStore", "HeaderStore")(observe
         }
     }
 
-    useEffect(() => {        
+    useEffect(() => {
         dateChecker()
     }, [])
-
 
     return (
         <Link style={{ textDecoration: 'none' }} to='/' onClick={getCity}>

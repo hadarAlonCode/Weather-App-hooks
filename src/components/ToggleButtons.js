@@ -23,35 +23,35 @@ const ToggleButtons = inject("CityStore", "HeaderStore")(observer(function (prop
         props.HeaderStore.changeTemp()
     }
 
-        return (
-            <div className="toggleSection">
-                <div className="lightMode" id={colorToggle()}>
-                    <Brightness5Icon />
-                    <Switch
-                        checked={!props.HeaderStore.isLight}
-                        onChange={changeMode}
-                        value="checkedB"
-                        color="default"
-                        inputProps={{ 'aria-label': 'primary checkbox' }}
-                    />
-                    <Brightness3Icon />
-                </div>
-                
-                <div className="tempMode" id={colorToggle()}>
-                    <div className="tempType">°C</div>
-                    <Switch
-                        checked={!props.HeaderStore.celsiusType}
-                        onChange={changeTempMode}
-                        value="checkedA"
-                        color="default"
-                        inputProps={{ 'aria-label': 'primary checkbox' }}
-                    />
-                    <div className="tempType">°F</div>
-                </div>
-
+    return (
+        <div className="toggleSection">
+            <div className="lightMode" id={colorToggle()}>
+                <Brightness5Icon />
+                <Switch
+                    checked={!props.HeaderStore.isLight}
+                    onChange={changeMode}
+                    value="checkedB"
+                    color="default"
+                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
+                <Brightness3Icon />
             </div>
 
-        )
-    }));
+            <div className="tempMode" id={colorToggle()}>
+                <div className="tempType">°C</div>
+                <Switch
+                    checked={!props.HeaderStore.celsiusType}
+                    onChange={changeTempMode}
+                    value="checkedA"
+                    color="default"
+                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
+                <div className="tempType">°F</div>
+            </div>
+
+        </div>
+
+    )
+}));
 
 export default ToggleButtons;
