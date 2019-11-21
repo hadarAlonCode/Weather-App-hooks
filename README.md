@@ -15,6 +15,7 @@ https://weather-app-hadar.herokuapp.com/
  ### features
 
 - Error handling
+- Autocomplete search
 - Add/remove from favorites
 - Default location by using the Geolocation API.
 - Dark/light theme support
