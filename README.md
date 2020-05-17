@@ -1,4 +1,4 @@
-### Waether App
+### Weather App
 
 Display current weather and a 5-day forecast of the searched location.
 

@@ -28,6 +28,7 @@
 
     .input__container{
         position: relative;
+        display: flex;
 
         #auto__complete__list{
             overflow-y: auto;
@@ -36,6 +37,7 @@
             width: 500px;
             transition: 0.3s;
             border-radius: 15px;
+            top: 55px;
 
             @media  #{$break1} {
                 width: 250px;
