@@ -1,11 +1,21 @@
-@import "../variables";
-@import "../devices";
+@import "../variables.scss";
+@import "../devices.scss";
 
 .favoriteBtn{
     display: grid;
     justify-content: end;
-    padding-right: 20px;   
+    position: absolute;   
+    right: 0px;
+
+    @media #{$break1} {
+        top: -97px;
+    }
+   
+
 }
+
+
+
 
 .favoriteIcon{
     font-size: 35px !important;
