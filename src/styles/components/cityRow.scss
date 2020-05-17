@@ -118,3 +118,16 @@
     }
 }
 
+.error__text{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    max-width: 500px;
+    
+    margin-top: 20px;
+}
