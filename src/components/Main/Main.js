@@ -16,6 +16,8 @@ const Main = inject("CityStore", "HeaderStore")(observer(function (props) {
         return idMode
     }
 
+    console.log(props.CityStore.city);
+    
     return (
         <div>
             <div className="search_fav">

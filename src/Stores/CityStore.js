@@ -39,6 +39,8 @@ export class CityStore {
         try {
             this.error = false
             const response = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.api_key}&q=${location}`)
+            
+           
             this.getCurrentWeather(response.data[0].LocalizedName, response.data[0].Key)
             return true
         }
@@ -56,7 +58,7 @@ export class CityStore {
             this.city.weatherText = response.data[0].WeatherText
             this.city.currentTemp = Math.round(response.data[0].Temperature.Metric.Value)
             this.city.unit = response.data[0].Temperature.Metric.Unit
-            this.city.icon = response.data[0].WeatherIcon
+            this.city.icon = response.data[0].WeatherIcon == 30 || response.data[0].WeatherIcon == 31 ? 1 : response.data[0].WeatherIcon
             this.city.date = response.data[0].LocalObservationDateTime
             this.city.isFavorite = this.localFavorite(this.city.cityKey)
             this.getFiveDays()
@@ -74,7 +76,8 @@ export class CityStore {
 
             for (let d of response.data.DailyForecasts) {
                 id++
-                this.city.fiveDays.push({ day: d.Date, minTemp: Math.round(d.Temperature.Minimum.Value), maxTemp: Math.round(d.Temperature.Maximum.Value), id: id, icon: d.Day.Icon })
+                let weater_icon = d.Day.Icon == 31 ||  d.Day.Icon == 30 ? 1 :  d.Day.Icon
+                this.city.fiveDays.push({ day: d.Date, minTemp: Math.round(d.Temperature.Minimum.Value), maxTemp: Math.round(d.Temperature.Maximum.Value), id: id, icon: weater_icon })
             }
         }
         catch (error) {

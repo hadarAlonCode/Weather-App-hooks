@@ -8,6 +8,7 @@ https://weather-app-hadar.herokuapp.com/
 
  - React 
  - Hooks
+ - Mobx
  - npm packages
  - Material - ui
  - AccuWeather Api - 50 calls/day 
