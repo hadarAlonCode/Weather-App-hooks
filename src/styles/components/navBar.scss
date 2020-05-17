@@ -1,5 +1,5 @@
-@import "../variables";
-@import "../devices";
+@import "../variables.scss";
+@import "../devices.scss";
 
 @keyframes slideNavbar {
     from {
@@ -26,10 +26,14 @@
     font-size: 27px;
     display: grid;
     align-content: center;
-    animation-duration: 1.5s;
+    animation-duration: 0.5s;
     animation-name: slideNavbar;
     justify-content: center;
     transition: 0.3s;
+
+    @media  #{$break1} {
+    background-color: #6c8794;
+    }
     
 }
 
@@ -61,3 +65,16 @@
     font-size: 46px !important;
 }
 
+
+
+@media  #{$break1} {
+    .listItems{
+        position: relative;
+        .nav-toggle-buttons{
+            background-color: #80a0b0;
+            position: absolute;
+            top: -60px;
+            right: 23px;
+      }
+      } 
+}

@@ -27,7 +27,7 @@ function NavBar(props) {
                         <div id={openNavBar ? "openNav" : "closeNav"} className="listItems">
                             <Link to={`/`} className="nav-link">Home</Link>
                             <Link to={`/favorites`} className="nav-link">Favorites</Link>
-                            <div className="nav-link"><ToggleButtons /></div>
+                            <div className="nav-link nav-toggle-buttons"><ToggleButtons /></div>
                         </div>
                     }
                 />
