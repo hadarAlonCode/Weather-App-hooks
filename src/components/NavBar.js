@@ -18,15 +18,15 @@ function NavBar(props) {
         <div>
             <div className="navBar_mobie">
                 <ResponsiveMenu
-                    menuOpenButton={<div><MenuIcon onClick={conrtolNav} className="menuIcon" /></div>}
-                    menuCloseButton={<div className="closeNav"><CloseIcon onClick={conrtolNav} className="menuIcon" /></div>}
+                    menuOpenButton={<div><MenuIcon onClick={()=>conrtolNav()} className="menuIcon" /></div>}
+                    menuCloseButton={<div className="closeNav"><CloseIcon onClick={()=>conrtolNav()} className="menuIcon" /></div>}
                     changeMenuOn="765px"
                     largeMenuClassName="large-menu-classname"
                     smallMenuClassName="small-menu-classname"
                     menu={
                         <div id={openNavBar ? "openNav" : "closeNav"} className="listItems">
-                            <Link to={`/`} className="nav-link">Home</Link>
-                            <Link to={`/favorites`} className="nav-link">Favorites</Link>
+                            <Link onClick={()=>conrtolNav()} to={`/`} className="nav-link">Home</Link>
+                            <Link onClick={()=>conrtolNav()} to={`/favorites`} className="nav-link">Favorites</Link>
                             <div className="nav-link nav-toggle-buttons"><ToggleButtons /></div>
                         </div>
                     }

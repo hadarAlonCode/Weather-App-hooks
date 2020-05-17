@@ -59,6 +59,7 @@ const Input = inject("CityStore")(observer(function (props) {
 
         let searchCity = await props.CityStore.getLocation(city) 
         setCity("")
+        setChar("")
             if (!searchCity) {
                 return ToastsStore.error("The allowed number of requests has been exceeded.")
             }
